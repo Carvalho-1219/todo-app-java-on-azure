@@ -37,7 +37,6 @@ node('master') {
             sh """
            
                 sh ./mvnw clean package
-                az logout
             """
         }
     }
