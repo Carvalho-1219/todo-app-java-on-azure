@@ -1,14 +1,14 @@
 node('master') {
 
-    def servicePrincipalId = '<your-service-principal>'
-    def resourceGroup = '<your-resource-group-name>'
-    def aks = '<your-kubernetes-cluster-name>'
+    def servicePrincipalId = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
+    def resourceGroup = 'Odsoft'
+    def aks = 'MyKubernetes'
 
-    def cosmosResourceGroup = '<your-cosmodb-resource-group>'
-    def cosmosDbName = '<your-cosmodb-name>'
-    def dbName = '<your-dbname>'
+    def cosmosResourceGroup = 'COSMOS_RG_East_US_50690554-7fcd-489c-9f4c-d73674721d29'
+    def cosmosDbName = 'c4baf628-0ee0-4-231-b9ee'
+    def dbName = 'db'
 
-    def dockerRegistry = '<your-acr-name>.azurecr.io'
+    def dockerRegistry = 'odsoftcr.azurecr.io'
     def imageName = "todo-app:${env.BUILD_NUMBER}"
     env.IMAGE_TAG = "${dockerRegistry}/${imageName}"
     def dockerCredentialId = '<your-acr-credential-id>'
