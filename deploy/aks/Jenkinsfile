@@ -18,7 +18,7 @@ node('master') {
         currentEnvironment == 'blue' ? 'green' : 'blue'
     }
     
-    def a1 = '8072695f-9c0f-4ba6-8677-2508b4c9b75c'
+    def a1 = '287de01f-09ec-4830-a19e-c78177c17147'
     def a2 = '72cc8991-72a2-4395-8a34-c12c1535e06c'
     def a3 = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
     def a4 = 'N[5KB20Wda4yBkj-Lw=jx:fKWesSyV[?'
@@ -29,7 +29,7 @@ node('master') {
     }
 
     stage('Build') {
-        withCredentials([azureServicePrincipal(servicePrincipalId)]) {
+        withCredentials([azureServicePrincipal(a1)]) {
             sh """
                 az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
                 az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
