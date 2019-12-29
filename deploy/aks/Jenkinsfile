@@ -4,8 +4,9 @@ node('master') {
     def resourceGroup = 'Odsoft'
     def aks = 'MyKubernetes'
 
-    def cosmosResourceGroup = 'COSMOS_RG_East_US_50690554-7fcd-489c-9f4c-d73674721d29'
-    def cosmosDbName = 'c4baf628-0ee0-4-231-b9ee'
+    
+    def cosmosResourceGroup = 'CosmoResource'
+    def cosmosDbName = 'odsoft'
     def dbName = 'db'
 
     def dockerRegistry = 'odsoftcr.azurecr.io'
