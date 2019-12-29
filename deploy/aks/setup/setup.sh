@@ -8,10 +8,10 @@ if ! az group list >/dev/null 2>&1; then
     exit 1
 fi
 
-resource_group=MyResource
-location=UK South
-aks_name= MyKubernetesCluster
-dns_name_suffix=FQDN
+resource_group=Odsoft
+location=uksouth
+aks_name= MyKubernetes
+dns_name_suffix=MyKubernetes-dns
 companion_rg="MC_${resource_group}_${aks_name}_${location}"
 
 echo "Checking resource group $resource_group..."
@@ -69,4 +69,3 @@ assign_dns todoapp-test-blue "aks-todoapp-blue$dns_name_suffix"
 assign_dns todoapp-test-green "aks-todoapp-green$dns_name_suffix"
 
 rm -f "$kubeconfig"
-
