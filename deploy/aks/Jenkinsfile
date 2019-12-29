@@ -17,17 +17,23 @@ node('master') {
     def newEnvironment = { ->
         currentEnvironment == 'blue' ? 'green' : 'blue'
     }
+    
+    def a1 = '279d16de-be86-4cc6-8e12-5a4ed343b00e'
+    def a2 = '72cc8991-72a2-4395-8a34-c12c1535e06c'
+    def a3 = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
+    def a4 = 'N[5KB20Wda4yBkj-Lw=jx:fKWesSyV[?'
+    def a5 = '7b89ac15-d7eb-49be-969b-a534a5cccbef'
 
     stage('SCM') {
         checkout scm
     }
 
     stage('Build') {
-        withCredentials([azureServicePrincipal(credentialsId: '279d16de-be86-4cc6-8e12-5a4ed343b00e',
-                                    subscriptionIdVariable: '72cc8991-72a2-4395-8a34-c12c1535e06c',
-                                    clientIdVariable: 'cc80bf1f-8403-4dd3-b658-110503251cd0',
-                                    clientSecretVariable: 'N[5KB20Wda4yBkj-Lw=jx:fKWesSyV[?',
-                                    tenantIdVariable: '7b89ac15-d7eb-49be-969b-a534a5cccbef')]) {
+        withCredentials([azureServicePrincipal(credentialsId: $a1 ,
+                                               subscriptionIdVariable: $a2,
+                                    clientIdVariable: $a3,
+                                    clientSecretVariable: $a4 ,
+                                    tenantIdVariable: $a5)]) {
             sh """
                 az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
                 az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
