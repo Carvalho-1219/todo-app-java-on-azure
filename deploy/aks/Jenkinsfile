@@ -34,10 +34,11 @@ node('master') {
                                     clientIdVariable: "$a3",
                                     clientSecretVariable: "$a4" ,
                                     tenantIdVariable: "$a5")]) {
-            sh """
+           withMaven(){
+           sh ./mvnw clean package
+           }
            
-                sh ./mvnw clean package
-            """
+                
         }
     }
 
