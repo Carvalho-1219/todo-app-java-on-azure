@@ -35,7 +35,7 @@ node('master') {
                                     clientSecretVariable: "$a4" ,
                                     tenantIdVariable: "$a5")]) {
            withMaven(){
-           bat ./mvnw clean package
+            sh ./mvnw clean package
            }
            
                 
