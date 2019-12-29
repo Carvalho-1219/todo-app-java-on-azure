@@ -1,6 +1,6 @@
 node('master') {
 
-    def servicePrincipalId = 'a8fb40f1-8547-4f42-8d32-1ebdc413d75a'
+    def servicePrincipalId = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
     def resourceGroup = 'Odsoft'
     def aks = 'MyKubernetes'
 
@@ -23,7 +23,11 @@ node('master') {
     }
 
     stage('Build') {
-        withCredentials([azureServicePrincipal(servicePrincipalId)]) {
+        withCredentials([azureServicePrincipal(credentialsId: '279d16de-be86-4cc6-8e12-5a4ed343b00e',
+                                    subscriptionIdVariable: '72cc8991-72a2-4395-8a34-c12c1535e06c',
+                                    clientIdVariable: 'cc80bf1f-8403-4dd3-b658-110503251cd0',
+                                    clientSecretVariable: 'N[5KB20Wda4yBkj-Lw=jx:fKWesSyV[?',
+                                    tenantIdVariable: '7b89ac15-d7eb-49be-969b-a534a5cccbef')]) {
             sh """
                 az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
                 az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
