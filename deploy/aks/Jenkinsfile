@@ -18,7 +18,7 @@ node('master') {
         currentEnvironment == 'blue' ? 'green' : 'blue'
     }
     
-    def a1 = '279d16de-be86-4cc6-8e12-5a4ed343b00e'
+    def a1 = '8072695f-9c0f-4ba6-8677-2508b4c9b75c'
     def a2 = '72cc8991-72a2-4395-8a34-c12c1535e06c'
     def a3 = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
     def a4 = 'N[5KB20Wda4yBkj-Lw=jx:fKWesSyV[?'
