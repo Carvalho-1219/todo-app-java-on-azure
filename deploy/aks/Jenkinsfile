@@ -1,5 +1,4 @@
 node('master') {
-
     def servicePrincipalId = 'cc80bf1f-8403-4dd3-b658-110503251cd0'
     def resourceGroup = 'Odsoft'
     def aks = 'MyKubernetes'
