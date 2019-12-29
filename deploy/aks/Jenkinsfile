@@ -11,7 +11,7 @@ node('master') {
     def dockerRegistry = 'odsoftcr.azurecr.io'
     def imageName = "todo-app:${env.BUILD_NUMBER}"
     env.IMAGE_TAG = "${dockerRegistry}/${imageName}"
-    def dockerCredentialId = '<your-acr-credential-id>'
+    def dockerCredentialId = '/subscriptions/72cc8991-72a2-4395-8a34-c12c1535e06c/resourceGroups/Odsoft/providers/Microsoft.ContainerRegistry/registries/OdsoftCR'
 
     def currentEnvironment = 'blue'
     def newEnvironment = { ->
