@@ -43,7 +43,7 @@ node('master') {
     }
 
     stage('Docker Image') {
-        withDockerRegistry([credentialsId: dockerCredentialId, url: "http://odsoftcr.azurecr.io"]) {
+        withDockerRegistry([credentialsId: dockerCredentialId, url: 'http://odsoftcr.azurecr.io']) {
             dir('target') {
                 sh """
                     cp -f ../src/aks/Dockerfile .
