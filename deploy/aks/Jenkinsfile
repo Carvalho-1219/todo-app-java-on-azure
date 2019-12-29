@@ -29,7 +29,7 @@ node('master') {
     }
 
     stage('Build') {
-        withCredentials([azureServicePrincipal(credentialsId: $a1 ,
+        withCredentials([azureServicePrincipal(credentialsId: "$a1" ,
                                                subscriptionIdVariable: $a2,
                                     clientIdVariable: $a3,
                                     clientSecretVariable: $a4 ,
