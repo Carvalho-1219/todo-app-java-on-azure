@@ -30,10 +30,10 @@ node('master') {
 
     stage('Build') {
         withCredentials([azureServicePrincipal(credentialsId: "$a1" ,
-                                               subscriptionIdVariable: $a2,
-                                    clientIdVariable: $a3,
-                                    clientSecretVariable: $a4 ,
-                                    tenantIdVariable: $a5)]) {
+                                               subscriptionIdVariable: "$a2",
+                                    clientIdVariable: "$a3",
+                                    clientSecretVariable: "$a4" ,
+                                    tenantIdVariable: "$a5")]) {
             sh """
                 az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
                 az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
