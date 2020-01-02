@@ -47,7 +47,7 @@ node('master') {
    stage('Check Env') {
         // check the current active environment to determine the inactive one that will be deployed to
 
-        withCredentials([azureServicePrincipal(servicePrincipalId)]) {
+        withCredentials([azureServicePrincipal(a1)]) {
             // fetch the current service configuration
             sh """
               az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
