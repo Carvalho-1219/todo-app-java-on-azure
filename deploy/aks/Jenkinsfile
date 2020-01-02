@@ -55,7 +55,9 @@ node('master') {
               az aks get-credentials --resource-group "${resourceGroup}" --name "${aks}" --admin --file kubeconfig
               az logout
    	    
-	    withKubeConfig([credentialsId: 'user1', serverUrl: 'https://api.k8s.my-company.com']) {
+	   """
+        }
+	withKubeConfig([credentialsId: 'a91f76d6-25a0-4b0d-ab92-12a66d2fd6b7', serverUrl: 'https://mykubernetes-dns-9e6aa400.hcp.uksouth.azmk8s.io:443']) {
    	      current_role="\$(kubectl --kubeconfig kubeconfig get services todoapp-service --output json | jq -r .spec.selector.role)"
               if [ "\$current_role" = null ]; then
                   echo "Unable to determine current environment"
@@ -64,7 +66,6 @@ node('master') {
               echo "\$current_role" >current-environment
             """
 	}
-        }
 
         // parse the current active backend
         currentEnvironment = readFile('current-environment').trim()
