@@ -76,8 +76,6 @@ node('master') {
         """
      }
    
-	
-
     stage('Deploy') {
         // Apply the deployments to AKS.
         // With enableConfigSubstitution set to true, the variables ${TARGET_ROLE}, ${IMAGE_TAG}, ${KUBERNETES_SECRET_NAME}
