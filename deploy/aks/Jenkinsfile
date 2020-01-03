@@ -46,7 +46,8 @@ node('master') {
 
    stage('Check Env') {
         // check the current active environment to determine the inactive one that will be deployed to
-	withKubeConfig([credentialsId: 'a91f76d6-25a0-4b0d-ab92-12a66d2fd6b7', serverUrl: 'https://mykubernetes-dns-9e6aa400.hcp.uksouth.azmk8s.io:443']) {
+	withCredentials([azureServicePrincipal(a1)]) {
+	   withKubeConfig([credentialsId: 'a91f76d6-25a0-4b0d-ab92-12a66d2fd6b7', serverUrl: 'https://mykubernetes-dns-9e6aa400.hcp.uksouth.azmk8s.io:443']) {
    	     sh """
 	     	az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
               	az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
@@ -60,7 +61,8 @@ node('master') {
 		}
               echo "\$current_role" >current-environment
              """
- 	}
+ 		}
+	}
         // parse the current active backend
         currentEnvironment = readFile('current-environment').trim()
 
