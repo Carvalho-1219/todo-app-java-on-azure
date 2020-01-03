@@ -55,7 +55,7 @@ node('master') {
                   configFilePaths: 'deploy/aks/deployment.yml',
                   enableConfigSubstitution: true,
                   secretName: dockerRegistry,
-                  containerRegistryCredentials: [[credentialsId: dockerCredentialId, url: "http://${dockerRegistry}"]]
+                  containerRegistryCredentials: [[credentialsId: "b72eee7e-e860-48b9-b923-aeb6b4c55e86", url: "http://${dockerRegistry}"]]
     }
 
     def verifyEnvironment = { service ->
