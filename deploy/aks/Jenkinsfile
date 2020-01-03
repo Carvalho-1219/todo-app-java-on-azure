@@ -46,9 +46,9 @@ node('master') {
 
    stage('Check Env') {
         // check the current active environment to determine the inactive one that will be deployed to
-	withCredentials([azureServicePrincipal(a1)]) {
 	   withKubeConfig([credentialsId: 'a91f76d6-25a0-4b0d-ab92-12a66d2fd6b7', serverUrl: 'https://mykubernetes-dns-9e6aa400.hcp.uksouth.azmk8s.io:443']) {
-   	     sh """
+   	     	withCredentials([azureServicePrincipal(a1)]) {
+		sh """
 	     	az login --service-principal -u "\$AZURE_CLIENT_ID" -p "\$AZURE_CLIENT_SECRET" -t "\$AZURE_TENANT_ID"
               	az account set --subscription "\$AZURE_SUBSCRIPTION_ID"
               	az aks get-credentials --resource-group "${resourceGroup}" --name "${aks}" --admin --file kubeconfig
@@ -59,8 +59,8 @@ node('master') {
                   echo "Unable to determine current environment"
                   exit 1
 		}
-              echo "\$current_role" >current-environment
-             """
+              	echo "\$current_role" >current-environment
+            	"""
  		}
 	}
         // parse the current active backend
